@@ -1,6 +1,13 @@
 <mvc:View 
+    controllerName="sap.ui.demo.walkthrough.controller.App"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc">
-    <Text text="Bui Trung Hieu dep trai nhat Lao Cai"/>
-
+    <Button 
+    text= "Bùi Trung Hiếu ?"
+    press=".onShowAnswer"/>
+    <Input 
+    value  = "{/recipient/name}"
+    description  = " Xin Chao {/recipient/name}"
+    valueLiveUpdate  = "true"
+    width = "80%"/>
 </mvc:View>
