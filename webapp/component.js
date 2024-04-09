@@ -1,18 +1,37 @@
-sap.ui.define([
-    "sap/ui/core/mvc/XMLView"
-], function(XMLView) {
+sap.ui.define(
+  [
+    "sap/ui/core/UIComponent",
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/model/resource/ResourceModel",
+  ],
+  function (UIComponent, JSONModel, ResourceModel) {
     "use strict";
+    return UIComponent.extend("sap.ui.demo.walkthrough.Component", {
+      metadata: {
+        interfaces: ["sap.ui.core.IAsyncContentCreation"],
+        rootView: {
+          viewName: "sap.ui.demo.walkthrough.view.App",
+          type: "XML",
+          id: "app",
+        },
+      },
+      init() {
+        // call the init function of the parent
+        UIComponent.prototype.init.apply(this, arguments);
+        //Set data model for View
+        var oData = {
+          recipient: {
+            name: "Test 7",
+          },
+        };
+        var oModel = new JSONModel(oData);
+        this.getView().setModel(oModel);
 
-    /* Step 2: Bootstrap
-    // alert("UI5 xin chào Bùi Trung Hiếu");
-    */
-
-    //  Step 3: Controls
-    // new Text({
-    //     text:"Hello Bui Trung Hieu xinh gái!"
-    // }).placeAt("content");
-    XMLView.create({
-        viewName: "sap.ui.demo.walkthrough.view.App"
-    }).then((oView) => oView.placeAt("content"));
-    
-});
+        var i18nModel = new ResourceModel({
+          bundleName: "sap.ui.demo.walkthrough.i18n.i18n",
+        });
+        this.getView().setModel(i18nModel, "i18n");
+      },
+    });
+  }
+);
