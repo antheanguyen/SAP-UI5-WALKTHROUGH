@@ -1,13 +1,36 @@
-<mvc:View 
-    controllerName="sap.ui.demo.walkthrough.controller.App"
-    xmlns="sap.m"
-    xmlns:mvc="sap.ui.core.mvc">
-    <Button 
-    text= "{i18n>showHelloButtonText}"
-    press=".onShowAnswer"/>
-    <Input 
-    value  = "{/recipient/name}"
-    description  = " Xin Chao {/recipient/name}"
-    valueLiveUpdate  = "true"
-    width = "80%"/>
+<mvc:View
+	controllerName="ui5.walkthrough.controller.App"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true">
+    <Shell >
+    <App class ="myAppDemoWT" >
+        <pages>
+            <Page title="{i18n>homePageTitle}" >
+            <content>
+                <Panel headerText="{i18n>helloPanelHeaderText}"
+                      class = "sapUiResponsiveMargin"
+                      width="auto"
+                >
+                    <content>
+                	    <Button text="{i18n>showHelloButtonText}" 
+                        press=".onShowHello"
+                        class="myCustomButton"/>
+                        <Input
+		                        value="{/recipient/name}"
+		                        valueLiveUpdate="true"
+		                        width="60%"
+	                    />
+                        <FormattedText 
+                        htmlText="Hieu xin chao {/recipient/name}"
+                        class = "sapUiSmallMargin sapThemeHighlight-asColor myCustomText"
+                        />
+                    </content>
+                </Panel>
+            </content>
+
+            </Page>
+        </pages>
+    </App>
+    </Shell>
 </mvc:View>
